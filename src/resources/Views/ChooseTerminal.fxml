@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="350.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controllers.ChooseTerminalController">
+   <children>
+      <Label text="Choose terminals to permute" AnchorPane.bottomAnchor="340.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="5.0" />
+      <ListView fx:id="terminalSelectionListView" layoutX="186.0" layoutY="44.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="25.0" />
+      <Button fx:id="terminalButton" layoutX="161.0" layoutY="336.0" mnemonicParsing="false" onAction="#chooseTerminals" text="Ok" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="140.0" />
+   </children>
+</AnchorPane>

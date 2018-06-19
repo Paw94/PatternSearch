@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><settings>
+    <text>C:\Users\paw\IdeaProjects\PatternSearch\src\resources\SampleTexts\SampleText.txt</text>
+    <pattern>C:\Users\paw\IdeaProjects\PatternSearch\src\resources\SampleTexts\pattern.txt</pattern>
+    <grammar>C:\Users\paw\IdeaProjects\PatternSearch\src\resources\GrammarFiles\ExampleGrammar_1.grm</grammar>
+    <algorithm>Karp-Rabin</algorithm>
+    <wordSeparator>Q</wordSeparator>
+    <mode>3</mode>
+</settings>

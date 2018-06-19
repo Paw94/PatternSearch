@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="600.0" stylesheets="@../../resources/CSS/Test.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controllers.MainWindowController">
+   <children>
+      <MenuBar fx:id="menuBar" styleClass="info" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem fx:id="exportResults" mnemonicParsing="false" onAction="#generatePDF" text="Export results" />
+              <MenuItem mnemonicParsing="false" onAction="#endSession" text="Close" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Tools">
+              <items>
+                  <MenuItem mnemonicParsing="false" onAction="#loadText" text="Load text" />
+                <MenuItem mnemonicParsing="false" onAction="#loadPattern" text="Load pattern" />
+                  <MenuItem mnemonicParsing="false" onAction="#addGrammar" text="Load grammar" />
+                  <MenuItem mnemonicParsing="false" onAction="#chooseTerminals" text="Choose terminals to permute" />
+              </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#displayInfo" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <VBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="24.0">
+         <children>
+            <HBox prefHeight="337.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <ListView fx:id="listView" prefHeight="267.0" prefWidth="305.0" stylesheets="@../../resources/CSS/ListView.css">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="15.0" />
+                     </HBox.margin>
+                  </ListView>
+                  <Accordion fx:id="accordion" prefHeight="271.0" prefWidth="334.0">
+                     <panes>
+                        <TitledPane fx:id="textPane" animated="false" prefHeight="224.0" prefWidth="242.0" styleClass="primary" text="Text">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="190.0" prefWidth="166.0">
+                                 <children>
+                                    <Label layoutX="20.0" layoutY="34.0" text="File name" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="0.0" />
+                                    <Label layoutX="20.0" layoutY="73.0" text="File size" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="40.0" />
+                                    <Label layoutX="20.0" layoutY="114.0" text="Characters" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="80.0" />
+                                    <Label fx:id="textFileNameLabel" layoutX="156.0" layoutY="25.0" text="Label" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="0.0" />
+                                    <Label fx:id="textFileSizeLabel" layoutX="156.0" layoutY="65.0" text="Label" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="40.0" />
+                                    <Label fx:id="textCharactersLabel" layoutX="156.0" layoutY="105.0" text="Label" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="80.0" />
+                                 </children></AnchorPane>
+                           </content>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </TitledPane>
+                        <TitledPane fx:id="pane1" animated="false" styleClass="info" text="Pattern">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="14.0" text="File name" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <Label layoutX="14.0" layoutY="54.0" />
+                                    <Label layoutX="19.0" layoutY="46.0" text="File size" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="27.0" />
+                                    <Label layoutX="12.0" layoutY="75.0" text="Characters" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="54.0" />
+                                    <Label layoutX="15.0" layoutY="108.0" text="Terminals" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="80.0" />
+                                    <Label fx:id="patternFileNameLabel" layoutX="155.0" layoutY="10.0" text="Label" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="0.0" />
+                                    <Label fx:id="patternFileSizeLabel" layoutX="155.0" layoutY="37.0" text="Label" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="27.0" />
+                                    <Label fx:id="patternCharactersLabel" layoutX="155.0" layoutY="72.0" text="Label" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="54.0" />
+                                    <Label fx:id="patternTerminalsLabel" layoutX="155.0" layoutY="99.0" text="Label" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="80.0" />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </TitledPane>
+                        <TitledPane fx:id="pane2" animated="false" text="Grammar">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="first">
+                                 <children>
+                                    <Label layoutX="34.0" layoutY="30.0" text="Grammar name" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <Label layoutX="23.0" layoutY="39.0" text="Terminals" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="20.0" />
+                                    <Label layoutX="12.0" layoutY="75.0" text="Non-Terminals" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="40.0" />
+                                    <Label layoutX="34.0" layoutY="115.0" text="Rules" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="60.0" />
+                                    <Label layoutX="10.0" layoutY="96.0" text="Grammar size" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="80.0" />
+                                    <Label fx:id="grammarFileNameLabel" layoutX="183.0" layoutY="10.0" text="Label" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="0.0" />
+                                    <Label fx:id="grammarTerminalsLabel" layoutX="197.0" layoutY="30.0" text="Label" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="20.0" />
+                                    <Label fx:id="grammarNonTerminalsLabel" layoutX="183.0" layoutY="61.0" text="Label" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="40.0" />
+                                    <Label fx:id="grammarRulesLabel" layoutX="169.0" layoutY="81.0" text="Label" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="60.0" />
+                                    <Label fx:id="grammarSizeLabel" layoutX="169.0" layoutY="115.0" text="Label" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="80.0" />
+                                 </children></AnchorPane>
+                           </content>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </TitledPane>
+                        <TitledPane fx:id="pane3" animated="false" styleClass="success" text="Statistics">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Label layoutX="24.0" layoutY="25.0" text="Generated permutations" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <Label layoutX="24.0" layoutY="55.0" text="Valid permutations" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="40.0" />
+                                    <Label layoutX="32.0" layoutY="56.0" text="Matches found" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="80.0" />
+                                    <Label fx:id="allPermutationsLabel" layoutX="191.0" layoutY="10.0" text="Label" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="0.0" />
+                                    <Label fx:id="validPermutationsLabel" layoutX="184.0" layoutY="50.0" text="Label" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="40.0" />
+                                    <Label fx:id="matchesLabel" layoutX="191.0" layoutY="81.0" text="Label" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="80.0" />
+                                 </children></AnchorPane>
+                           </content>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </TitledPane>
+                     </panes>
+                     <HBox.margin>
+                        <Insets bottom="10.0" top="15.0" />
+                     </HBox.margin>
+                  </Accordion>
+               </children>
+            </HBox>
+            <Region prefHeight="39.0" prefWidth="638.0" />
+            <HBox prefHeight="190.0" prefWidth="600.0">
+               <children>
+                  <TextArea fx:id="patternTextArea" prefHeight="104.0" prefWidth="177.0" promptText="Pattern" styleClass="info" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </TextArea>
+                  <AnchorPane prefHeight="127.0" prefWidth="304.0">
+                     <children>
+                        <ComboBox fx:id="searchAlgorithmComboBox" layoutX="20.0" layoutY="14.0" prefWidth="150.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0" />
+                        <ComboBox fx:id="modeComboBox" layoutX="20.0" layoutY="54.0" prefWidth="150.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="55.0" />
+                        <Button fx:id="searchButton" alignment="CENTER" contentDisplay="CENTER" layoutX="73.0" layoutY="95.0" mnemonicParsing="false" onAction="#searchForPattern" styleClass="primary" text="Search" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="100.0" />
+                     </children>
+                  </AnchorPane>
+               </children></HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
