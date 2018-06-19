@@ -164,6 +164,12 @@ public class MainWindowController extends SceneGenerator implements Initializabl
                         AlertsFXML.errorAlert("Pattern cannot be permuted in this mode", "Pattern consists of characters that are not terminals!  Please remove invalid characters or change specified grammar file.");
                     break;
                 }
+                case 5: {
+                    if (verifyPattern(pattern)){
+                        validPermutations.add(pattern);
+                        processValidPermutations(text, pattern, validPermutations);
+                    }
+                }
                 default: {
                     System.out.println("Undefined mode");
                     break;
@@ -349,7 +355,7 @@ public class MainWindowController extends SceneGenerator implements Initializabl
         ObservableList<String> supportedAlgorithmList = FXCollections.observableArrayList(supportedSearchingAlgorithms);
         searchAlgorithmComboBox.setItems(supportedAlgorithmList);
 
-        ArrayList<String> supportedModes = new ArrayList<>(Arrays.asList("Permute terminals with CYK verification", "Permute terminals without CYK verification", "Permute words", "Permute chosen terminals"));
+        ArrayList<String> supportedModes = new ArrayList<>(Arrays.asList("Permute terminals with CYK verification", "Permute terminals without CYK verification", "Permute words", "Permute chosen terminals", "Default"));
         ObservableList<String> supportedModesList = FXCollections.observableArrayList(supportedModes);
         modeComboBox.setItems(supportedModesList);
 
