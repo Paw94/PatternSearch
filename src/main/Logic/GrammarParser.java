@@ -37,8 +37,6 @@ public class GrammarParser {
                         part = part.replaceAll("<.*>", "");
                         if (!parsedGrammar.getTerminals().contains(part) && !part.equals(""))
                             parsedGrammar.addTerminal(part);
-                        //   parsedProductions = new ArrayList<String>(Arrays.asList(rightSide));
-                        // parsedProductions.add(part);
                     }
                     leftSide = leftSide.replaceAll("[<|>]", "");
 
@@ -51,9 +49,7 @@ public class GrammarParser {
                     parsedGrammar.addProduction(leftSide, parsedProductions);
                 }
             }
-
             scanner.close();
-
         } catch (IOException ex) {
             System.out.println("Cannot parse grammar file");
         }

@@ -33,8 +33,6 @@ public class PatternMatcher {
                 rules[j][k] = cyk;
             }
         }
-        //printRules(rules, length);
-        //System.out.println(rules[length - 1][0]);
         return rules[length - 1][0].contains("S");
     }
 
@@ -56,7 +54,6 @@ public class PatternMatcher {
     private void printRules(ArrayList<String>[][] rules, int length) {
         System.out.println("------ CYK TABLE ------");
         for (int i = 0; i < length; i++) {
-            //System.out.println("Rule nr " + i);
             for (int j = 0; j < length; j++) {
                 System.out.print(rules[length - 1 - i][j] + " ");
             }

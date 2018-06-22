@@ -11,7 +11,8 @@ Supported searching modes:
 ## Searching algorithms
 * Naive (default and backwards)
 * Karp-Rabin
-
+* Knuth-Morriss-Pratt
+* Boyer-Moore
 ## Matching algorithms
 * Cocke-Younger-Kasami
 ## Permuting algorithm

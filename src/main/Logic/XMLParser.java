@@ -23,7 +23,6 @@ public class XMLParser {
             } else System.out.println("File is invalid: settings not found");
         } catch (IOException e) {
             System.out.println("File is invalid: some settings are missing");
-            //e.printStackTrace();
             Core.getInstance().setText(null);
             Core.getInstance().setPattern(null);
             Core.getInstance().setGrammar(null);
@@ -40,7 +39,6 @@ public class XMLParser {
             Document doc = dBuilder.parse(config);
             doc.getDocumentElement().normalize();
             Node node = doc.getElementsByTagName("settings").item(0);
-
             return node;
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -62,10 +60,8 @@ public class XMLParser {
                 NodeList nodes = element.getElementsByTagName(tag).item(0).getChildNodes();
                 Node node1 = (Node) nodes.item(0);
                 return node1.getNodeValue();
-            }
-            else return null;
-    }
-    else return null;
+            } else return null;
+        } else return null;
     }
 
     public static void modifyTag(String tag, String filePath, String value) {
@@ -100,7 +96,7 @@ public class XMLParser {
         if (node.getNodeType() == Node.ELEMENT_NODE) {
             Element element = (Element) node;
             core.setText(new String(Files.readAllBytes(Paths.get(getValue("text", element)))));
-            core.setPattern(TextManipulation.getStringFromFile(new File (getValue("pattern", element))));
+            core.setPattern(TextManipulation.getStringFromFile(new File(getValue("pattern", element))));
             core.setGrammar(GrammarParser.parseGrammarFile(getValue("grammar", element)));
             core.setWordSeparator(getValue("wordSeparator", element));
             core.setAlgorithm(getValue("algorithm", element));

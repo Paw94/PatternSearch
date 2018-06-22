@@ -13,7 +13,7 @@ public class Alphabet {
         this.characters = new ArrayList<>(characters);
     }
 
-    public void addCharacter (String character){
+    public void addCharacter(String character) {
         this.characters.add(character);
     }
 

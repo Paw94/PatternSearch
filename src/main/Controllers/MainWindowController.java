@@ -155,8 +155,7 @@ public class MainWindowController extends SceneGenerator implements Initializabl
                     if (verifyPattern(pattern)) {
                         if (Core.getInstance().getTerminalsToPermute() == null) {
                             chooseTerminals();
-                        }
-                        else {
+                        } else {
                             validPermutations = permuteChosenTerminals(pattern, Core.getInstance().getTerminalsToPermute(), Core.getInstance().getGrammar(), pm);
                             processValidPermutations(text, pattern, validPermutations);
                         }
@@ -165,7 +164,7 @@ public class MainWindowController extends SceneGenerator implements Initializabl
                     break;
                 }
                 case 5: {
-                    if (verifyPattern(pattern)){
+                    if (verifyPattern(pattern)) {
                         validPermutations.add(pattern);
                         processValidPermutations(text, pattern, validPermutations);
                     }
@@ -191,7 +190,7 @@ public class MainWindowController extends SceneGenerator implements Initializabl
             validPermutation = validPermutation.replaceAll("\n", System.getProperty("line.separator"));
             switch (Core.getInstance().getAlgorithm()) {
                 case "Knuth-Morriss-Pratt": {
-                    part = PatternSearchingUtil.KnuthMorissPratt(text, validPermutation);
+                    part = PatternSearchingUtil.knuthMorrissPratt(text, validPermutation);
                     break;
                 }
                 case "Boyer-Moore": {
@@ -211,13 +210,10 @@ public class MainWindowController extends SceneGenerator implements Initializabl
                     break;
                 }
             }
-
             for (Integer fragment : part) {
-                //items.add(text.substring(fragment, fragment + pattern.length()) + " | " + fragment + "-" + (fragment + pattern.length()));
-                items.add("Permutation number " +  counter + " found at " + fragment + "-" + (fragment + pattern.length()));
+                items.add("Permutation number " + counter + " found at " + fragment + "-" + (fragment + pattern.length()));
                 matchedPermutations.put(fragment, text.substring(fragment, fragment + pattern.length()));
                 unique.add(text.substring(fragment, fragment + pattern.length()));
-
             }
         }
         listView.setItems(items);
@@ -367,9 +363,7 @@ public class MainWindowController extends SceneGenerator implements Initializabl
 
     private void initCore() {
         XMLParser.parseSettingsFile(System.getProperty("user.dir") + "\\src\\resources\\Settings\\Config.xml");
-        //Core.getInstance().getGrammar().displayGrammar();
         patternTextArea.setText(Core.getInstance().getPattern());
-        //System.out.println(TextManipulation.getStringFromFile(new File("C:\\Users\\paw\\IdeaProjects\\FX_PatternSearching_1.0\\src\\resources.SampleTexts\\pattern.txt")));
     }
 
     private void fillStatistics(String allPermutations, String validPermutations, String matches) {
@@ -508,7 +502,7 @@ public class MainWindowController extends SceneGenerator implements Initializabl
         return document;
     }
 
-    private String getDateTimeAsString(){
+    private String getDateTimeAsString() {
         StringBuilder dateTimeString = new StringBuilder();
 
         LocalDateTime dateTime = LocalDateTime.now();
@@ -553,7 +547,6 @@ public class MainWindowController extends SceneGenerator implements Initializabl
 
                 for (String permutation : unique) {
                     Paragraph centre = new Paragraph().add(new Text("Permutation: ")).add(new Text(permutation).setFont(boldItalicFont)).add(" was located in text at: ");
-                    //centre.setTextAlignment(TextAlignment.CENTER);
                     document.add(centre);
                     //getting all the offsets of given permutation
                     for (Integer offset : matchedPermutations.keySet()) {
@@ -591,8 +584,5 @@ public class MainWindowController extends SceneGenerator implements Initializabl
         initComponents();
         initListeners();
         fillAcordion();
-
-
-        //label1.setText(String.valueOf(Core.getInstance().getText().length()));
     }
 }

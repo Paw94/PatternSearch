@@ -1,24 +1,23 @@
 package main.Logic;
 
 
-
 import sun.swing.FilePane;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class JSystemFileChooser extends JFileChooser {
-    public void updateUI(){
+    public void updateUI() {
         LookAndFeel old = UIManager.getLookAndFeel();
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        }
-        catch (Throwable ex) {
+        } catch (Throwable ex) {
             old = null;
         }
 
         super.updateUI();
 
-        if(old != null){
+        if (old != null) {
             FilePane filePane = findFilePane(this);
             filePane.setViewType(FilePane.VIEWTYPE_DETAILS);
             filePane.setViewType(FilePane.VIEWTYPE_LIST);
@@ -29,21 +28,20 @@ public class JSystemFileChooser extends JFileChooser {
 
             try {
                 UIManager.setLookAndFeel(old);
-            }
-            catch (UnsupportedLookAndFeelException ignored) {} // shouldn't get here
+            } catch (UnsupportedLookAndFeelException ignored) {
+            } // shouldn't get here
         }
     }
 
 
-
-    private static FilePane findFilePane(Container parent){
-        for(Component comp: parent.getComponents()){
-            if(FilePane.class.isInstance(comp)){
-                return (FilePane)comp;
+    private static FilePane findFilePane(Container parent) {
+        for (Component comp : parent.getComponents()) {
+            if (FilePane.class.isInstance(comp)) {
+                return (FilePane) comp;
             }
-            if(comp instanceof Container){
-                Container cont = (Container)comp;
-                if(cont.getComponentCount() > 0){
+            if (comp instanceof Container) {
+                Container cont = (Container) comp;
+                if (cont.getComponentCount() > 0) {
                     FilePane found = findFilePane(cont);
                     if (found != null) {
                         return found;
@@ -51,7 +49,6 @@ public class JSystemFileChooser extends JFileChooser {
                 }
             }
         }
-
         return null;
     }
 }

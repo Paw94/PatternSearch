@@ -26,12 +26,10 @@ public class ChooseTerminalController implements Initializable {
 
     @FXML
     public void chooseTerminals() {
-        List <String> list = terminalSelectionListView.getSelectionModel().getSelectedItems();
-        ArrayList <String> terminals = new ArrayList <String> (list);
-
+        List<String> list = terminalSelectionListView.getSelectionModel().getSelectedItems();
+        ArrayList<String> terminals = new ArrayList<String>(list);
         Core.getInstance().setTerminalsToPermute(terminals);
         endSession();
-
     }
 
     private void endSession() {
@@ -44,7 +42,6 @@ public class ChooseTerminalController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         terminalSelectionListView.setFocusTraversable(false);
         terminalSelectionListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-
         ArrayList<String> terminals = Core.getInstance().getGrammar().getTerminals();
         ObservableList<String> terminalsList = FXCollections.observableArrayList(terminals);
         terminalSelectionListView.setItems(terminalsList);

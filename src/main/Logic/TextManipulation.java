@@ -27,12 +27,6 @@ public class TextManipulation {
             AlertsFXML.errorAlert("File is not supported", "Unsupported encoding in file: " + permutationFile.getPath());
             e.printStackTrace();
         }
-
-//        for (String permutation : getPermutationsFromFile(permutationFile)){
-//            System.out.println("------------------");
-//            System.out.println(permutation);
-//            System.out.println(pm.checkString(permutation));
-//        }
     }
 
 
@@ -92,7 +86,6 @@ public class TextManipulation {
     public static String createLineFromArray(ArrayList<String> permutation) {
         StringBuilder line = new StringBuilder();
         for (int i = 0; i < permutation.size() - 1; i++) {
-            //line.append(permutation.get(i)).append(",");
             line.append(permutation.get(i)).append("");
         }
         line.append(permutation.get(permutation.size() - 1)).append(";;");
@@ -112,23 +105,6 @@ public class TextManipulation {
     }
 
     public static long countCharacters(File file) {
-//        FileChannel fChannel = null;
-//        long length = 0;
-//        try {
-//            fChannel = new FileInputStream(file).getChannel();
-//            byte[] barray = new byte[(int) file.length()];
-//            ByteBuffer bb = ByteBuffer.wrap(barray);
-//            fChannel.read(bb);
-//            String str = new String(barray);
-//            length = str.length();
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return length;
-
-
         BufferedReader reader = null;
         long lineCount = 0, wordCount = 0, charCount = 0;
         try {
@@ -143,7 +119,6 @@ public class TextManipulation {
                 }
                 currentLine = reader.readLine();
             }
-
         } catch (IOException e) {
             System.out.println("Something went wrong");
         }

@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class SceneGenerator {
 
-    public void generateModal (String fxml, String title) throws IOException {
+    public void generateModal(String fxml, String title) throws IOException {
         Parent parent = FXMLLoader.load(getClass().getResource(fxml));
 
         Stage news = new Stage();
@@ -25,13 +25,11 @@ public class SceneGenerator {
         news.showAndWait();
 
     }
-    public void generateScene (String fxml, String title, ActionEvent event) throws IOException{
+
+    public void generateScene(String fxml, String title, ActionEvent event) throws IOException {
         Parent parent = FXMLLoader.load(getClass().getResource(fxml));
         Scene next = new Scene(parent);
         Stage current = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-//        current.setMinWidth(current.getWidth());
-//        current.setMinHeight(current.getHeight());
 
         current.hide();
         current.setScene(next);
@@ -40,7 +38,7 @@ public class SceneGenerator {
         current.show();
     }
 
-    public void generateNewInstance (String fxml,String title) throws IOException {
+    public void generateNewInstance(String fxml, String title) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(fxml));
         Scene next = new Scene(root);
         Stage current = new Stage();
